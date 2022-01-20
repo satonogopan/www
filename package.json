@@ -7,7 +7,7 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next export",
-    "deploy": "yarn run build && yarn run export"
+    "deploy": "npm run build && npm run export"
   },
   "dependencies": {
     "microcms-js-sdk": "^2.0.0",
