@@ -1,11 +1,17 @@
 import { client } from '../../libs/client';
 import styles from '../../styles/Home.module.scss';
+import Head from '../../components/Head';
 
 export default function BlogId({ blog }) {
   return (
+    <div>
+    <Head
+      title={blog.title}
+    />
     <main className={styles.main}>
       <h1 className={styles.title}>{blog.title}</h1>
       <p className={styles.publishedAt}>{blog.publishedAt}</p>
+      <p className={styles.category}>{blog.category && `${blog.category.name}`}</p>
       <div
         dangerouslySetInnerHTML={{
           __html: `${blog.body}`,
@@ -13,6 +19,7 @@ export default function BlogId({ blog }) {
 				className={styles.post}
       />
     </main>
+    </div>
   );
 }
 
