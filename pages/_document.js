@@ -11,7 +11,6 @@ export default class Document extends NextDocument {
 					<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 					<link rel="manifest" href="/site.webmanifest" />
 					<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-					<script type="text/javascript" src="//typesquare.com/3/tsst/script/ja/typesquare.js?61e91dcf6fd04da8908859fdac1e02e5" charset="utf-8"></script>
         </Head>
         <body>
           <Main />

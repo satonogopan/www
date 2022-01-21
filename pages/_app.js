@@ -1,11 +1,11 @@
+import '../styles/sanitize.css'
 import '../styles/globals.css'
-import LayoutMain from '../layouts/LayoutMain'
+import Script from 'next/script'
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <LayoutMain>
-      <Component {...pageProps} />
-    </LayoutMain>
+  const getLayout = Component.getLayout || ((page) => page);
+  return getLayout(
+    <Component {...pageProps} />
   )
 }
 

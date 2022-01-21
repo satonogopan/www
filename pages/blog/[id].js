@@ -1,27 +1,42 @@
+import Link from "next/link";
 import { client } from '../../libs/client';
 import styles from '../../styles/Home.module.scss';
 import Head from '../../components/Head';
+import Script from 'next/script'
+import Layout from '../../components/Layout';
 
 export default function BlogId({ blog }) {
   return (
-    <div>
-    <Head
-      title={blog.title}
-    />
+    <>
+    <Head title={`${blog.title}｜`}>
+    <Script src="//typesquare.com/3/tsst/script/ja/typesquare.js?61e91dcf6fd04da8908859fdac1e02e5" />
+    </Head>
     <main className={styles.main}>
-      <h1 className={styles.title}>{blog.title}</h1>
-      <p className={styles.publishedAt}>{blog.publishedAt}</p>
-      <p className={styles.category}>{blog.category && `${blog.category.name}`}</p>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${blog.body}`,
-        }}
-				className={styles.post}
-      />
+      <div className={styles.maininner}>
+        <h1 className={styles.title}>{blog.title}</h1>
+        <div className={styles.blogmeta}>
+          <p className={styles.category}>
+          <Link href={blog.category && `category/${blog.category.id}`}>
+            <a>{blog.category && `${blog.category.name}`}</a>
+          </Link>
+          </p>
+          <p className={styles.date}>{new Date(blog.publishedAt).toLocaleDateString()}</p>
+        </div>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `${blog.body}`,
+          }}
+  				className={styles.post}
+        />
+      </div>
     </main>
-    </div>
+    </>
   );
 }
+
+BlogId.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>
+};
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths = async () => {
